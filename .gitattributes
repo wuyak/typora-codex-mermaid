@@ -1,0 +1,10 @@
+* text=auto
+*.js text eol=lf
+*.mjs text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.svg text eol=lf
+
+*.pl text eol=lf
+*.command text eol=lf

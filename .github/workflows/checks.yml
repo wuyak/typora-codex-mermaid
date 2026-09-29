@@ -1,0 +1,23 @@
+name: Source checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  installer:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check scripts
+        run: |
+          /usr/bin/perl -c scripts/manage.pl
+          /bin/bash -n Install.command Uninstall.command
+          for file in scripts/*.mjs; do node --check "$file"; done
+          for file in src/*.js; do node --input-type=module --check < "$file"; done
+      - name: Test installation and recovery in temporary directories
+        run: python3 -m unittest discover -s tests -p test_installer.py

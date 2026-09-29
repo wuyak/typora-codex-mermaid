@@ -1,0 +1,4 @@
+[
+  "flowchart LR\n    A[Start] --> B[Parse]\n    B --> C{Valid?}\n    C -->|yes| D[Render]\n    C -->|no| E[Retry]\n    E --> B\n    D --> F[Done]\n    D -->|output| G[Archive]\n    classDef alert fill:#fff0ee,stroke:#c75343,color:#3b2420\n    classDef muted fill:#edf5ff,stroke:#477eae,color:#182f45\n    class C alert\n    class E muted",
+  "flowchart TB\n    A[Input] --> B[One]\n    A --> C[Two]\n    B --> D{Join}\n    C --> D\n    D --> E[Finish]\n    E -->|next| F[Review]\n    classDef alert fill:#fff0ee,stroke:#c75343,color:#3b2420\n    classDef muted fill:#edf5ff,stroke:#477eae,color:#182f45\n    class D alert\n    class F muted"
+]

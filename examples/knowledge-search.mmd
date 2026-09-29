@@ -1,0 +1,18 @@
+flowchart TB
+    Docs[知识文档<br/>PDF · Markdown · 网页] --> Parse[解析与索引]
+    Parse --> Index[(向量索引)]
+    Parse --> Store[(原文与元数据)]
+    User[用户提问] --> Query[理解问题<br/>识别意图 · 改写查询]
+    Query --> Vector[语义检索]
+    Query --> Keyword[关键词检索]
+    Index --> Vector
+    Store --> Keyword
+    Vector --> Rank[合并与重排]
+    Keyword --> Rank
+    Rank --> Model[生成回答<br/>相关片段 · 来源引用]
+    Model --> Answer[展示答案]
+    Model --> Citations[查看引用原文]
+    classDef storage fill:#f3f5f7,stroke:#a8b2bf,color:#364152
+    classDef success fill:#edf7f1,stroke:#8db9a0,color:#2d6145
+    class Index,Store storage
+    class Answer,Citations success

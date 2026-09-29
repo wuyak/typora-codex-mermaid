@@ -1,0 +1,25 @@
+Typora Codex Mermaid
+
+An unofficial integration for Typora. Not affiliated with, endorsed by, or
+maintained by OpenAI or Typora.
+
+The extraction and build workflow reads a locally installed Codex application.
+Verified application snapshot: 26.924.22138; bundled Mermaid: 11.16.0.
+The generated flowchart layout, theme functions, reference implementation and
+their dependencies originate from that application. src/renderer.js adapts its
+rendering behavior; src/plugin.js and src/viewer.js implement the Typora bridge
+and preview interaction.
+
+The Git source distribution excludes extracted vendor modules, the generated
+engine, application notices, local verification documents and install archives.
+The macOS release ZIP contains the prebuilt engine and the corresponding notices
+so users can install without extracting resources from Codex themselves.
+During extraction, THIRD_PARTY_NOTICES.txt is copied from the application's
+Resources directory and included in the local build. It is the application's
+full notice collection, not a claim that every listed dependency is used here.
+
+Upstream names, code and licenses retain their existing ownership and terms.
+This integration does not relicense the application or its dependencies.
+No blanket open-source license is assigned to this mixed-provenance project;
+the package metadata retains UNLICENSED. It is a source-sharing project and
+local build workflow, not an official SDK or supported extension interface.

@@ -1,0 +1,45 @@
+flowchart TB
+    Start["发现显示差异<br/>希望在 Typora 中<br/>复现 Codex 效果"]
+
+        Assets["定位渲染资源<br/>Mermaid · ELK · 定制样式"]
+        Engine["构建独立引擎<br/>在本地生成 SVG"]
+        RenderCheck["渲染对照<br/>布局 · 配色 · 多种图类型"]
+        Assets --> Engine
+
+        Entry["找到绘图入口<br/>保留 Typora 原生编辑"]
+        Failure["定位兼容故障<br/>API 只读 · DOM 类型冲突"]
+        Adapter["修复接入方式<br/>包装接口，修正类型来源"]
+        LiveCheck["编辑器实测<br/>编辑刷新 · 错误恢复<br/>HTML 导出"]
+        Entry --> Failure --> Adapter
+
+        Reading["发现阅读困难<br/>大图看不清<br/>整页放大会影响正文"]
+        Modal["加入独立弹窗<br/>缩放 · 拖动 · 适配窗口"]
+        Feedback["根据使用反馈调整<br/>单击图表预览<br/>单独进入源码编辑"]
+        ViewCheck["交互检查<br/>打开与关闭 · 缩放 · 正文不变"]
+        Reading --> Modal
+        Modal -->|直接点图更自然| Feedback
+
+        Plugin["整合插件<br/>渲染引擎 · 编辑接入 · 查看器"]
+        Package["成品安装包<br/>内置引擎、安装与卸载入口"]
+        Clean["整理公开材料<br/>替换私有示例，清理本机路径"]
+        Source["源码仓库<br/>构建脚本 · 示例 · 自动测试"]
+        InstallCheck["安装与恢复检查<br/>重复安装 · 卸载 · 应用升级"]
+        Plugin --> Package --> InstallCheck
+        Plugin --> Clean --> Source
+
+    Start --> Assets
+    Start --> Entry
+    Engine --> RenderCheck
+    Adapter --> LiveCheck
+    Start -.->|后续使用反馈| Reading
+    Feedback --> ViewCheck
+    RenderCheck --> Plugin
+    LiveCheck --> Plugin
+    ViewCheck --> Plugin
+
+    classDef issue fill:#fff0ee,stroke:#c75343,color:#3b2420
+    classDef result fill:#e8f6ee,stroke:#62a880,color:#234d35
+    classDef neutral fill:#f3f5f7,stroke:#87929e,color:#202b36
+    class Failure,Reading issue
+    class Plugin,Package,Source result
+    class Start,Assets,Clean neutral

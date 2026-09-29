@@ -1,0 +1,22 @@
+# Generated from the locally installed application; rebuild on each machine.
+/vendor/
+/dist/
+/THIRD_PARTY_NOTICES.txt
+
+# Private verification documents, exports, screenshots and old local packages.
+/evidence/
+/releases/
+/output/
+/.playwright-cli/
+
+# Dependencies, local configuration and temporary files.
+node_modules/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+*.log
+*.tgz
+*.tar.gz
+*.zip

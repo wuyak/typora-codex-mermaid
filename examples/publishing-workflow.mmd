@@ -1,0 +1,21 @@
+flowchart TB
+    Draft[提交内容<br/>文字 · 图片 · 附件] --> Check{内容检查}
+    Check -->|信息缺失| Revise[退回补充]
+    Check -->|通过| Review[编辑审核]
+    Review -->|需要调整| Revise
+    Review -->|通过| Schedule[安排发布]
+    Schedule --> Web[网站文章]
+    Schedule --> Mail[邮件订阅]
+    Schedule --> Feed[社交动态]
+    Web --> Stats[收集阅读数据]
+    Mail --> Stats
+    Feed --> Stats
+    Stats --> Report[效果分析<br/>阅读 · 订阅 · 转化]
+    Report --> Archive[(内容归档)]
+    Report --> Plan[下一期选题]
+    classDef note fill:#fff1eb,stroke:#ea8b70,color:#654436
+    classDef storage fill:#f3f5f7,stroke:#a8b2bf,color:#364152
+    classDef success fill:#edf7f1,stroke:#8db9a0,color:#2d6145
+    class Revise note
+    class Archive storage
+    class Report,Plan success
